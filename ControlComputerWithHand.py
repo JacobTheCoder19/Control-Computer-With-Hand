@@ -3,9 +3,12 @@
 # Purpose: To use your hand as a mouse and control the laptop using gestures.
 
 # Imports
-import cv2        # For video capture and image processing
-import mediapipe  # For hand tracking
-import pyautogui  # For controlling the mouse and performing clicks
+# For video capture and image processing
+import cv2        
+# For hand tracking
+import mediapipe  
+# For controlling the mouse and performing clicks
+import pyautogui  
 
 # Initializations
 capture_hands = mediapipe.solutions.hands.Hands()
@@ -75,29 +78,37 @@ while True:
                     cv2.circle(image, (x, y), 10, (0, 255, 255))
 
         # This calculates the distances between the thumb and other fingers for gestures
-        dist = y2 - y1   # The Distance between thumb and index finger
-        dist2 = y2 - y3  # The Distance between thumb and middle finger
-        dist3 = y2 - y4  # The Distance between thumb and ring finger
-        dist4 = y2 - y5  # The Distance between thumb and pinky finger
+        # The Distance between thumb and index finger
+        dist = y2 - y1   
+        # The Distance between thumb and middle finger
+        dist2 = y2 - y3  
+        # The Distance between thumb and ring finger
+        dist3 = y2 - y4  
+        # The Distance between thumb and pinky finger
+        dist4 = y2 - y5  
 
         # If the pointer finger is touching the thumb
         if dist < 31:  
-            pyautogui.click()  # Left clicks
+            # Left clicks
+            pyautogui.click()  
             print("clicked")
             
         # If the middle finger is touching the thumb
         if dist2 < 20:  
-            pyautogui.rightClick()  # Right clicks
+            # Right clicks
+            pyautogui.rightClick()  
             print("Right clicked")
 
         # If the ring finger is touching the thumb
         if dist3 < 20:  
-            pyautogui.scroll(150)  # Scrolls up
+            # Scrolls up
+            pyautogui.scroll(150)  
             print("scrolled up")
             
         # If the pinky finger touches the thumb
         if dist4 < 20:  
-            pyautogui.scroll(-150)  # Scrolls down
+            # Scrolls down
+            pyautogui.scroll(-150)  
             print("scrolled down")
 
     # Display the video feed with landmarks
